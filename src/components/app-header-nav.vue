@@ -3,7 +3,7 @@
       <!-- {{$store.state.category.list}} -->
     <li class="home"><RouterLink to="/">首页</RouterLink></li>
     <li v-for="item in list" :key="item.id">
-      <router-link to="/">{{item.name}}</router-link>
+      <router-link to="`/category/${item.id}`">{{item.name}}</router-link>
       <div class="layer">
         <ul>
           <li v-for="sub in item.children" :key="sub.id">

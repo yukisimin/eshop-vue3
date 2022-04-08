@@ -1,5 +1,5 @@
 {
-  "name": "eshop-client-pc",
+  "name": "wangyishop-client-pc",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,7 +12,10 @@
     "axios": "^0.26.0",
     "core-js": "^3.8.3",
     "normalize.css": "^8.0.1",
+    "qc": "0.0.1",
+    "vee-validate": "^4.0.3",
     "vue": "^3.2.13",
+    "vue-demi": "^0.12.5",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0",
     "vuex-persistedstate": "^4.1.0"
@@ -39,5 +42,17 @@
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
-  }
+  },
+  "description": "```\r npm install\r ```",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yukisimin/eshop-vue3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yukisimin/eshop-vue3/issues"
+  },
+  "homepage": "https://github.com/yukisimin/eshop-vue3#readme"
 }

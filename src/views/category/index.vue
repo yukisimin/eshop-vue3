@@ -21,15 +21,27 @@
         </ul>
       </div>
       <!-- 不同分类商品 -->
+   <!-- 分类关联商品 -->
+      <div class="ref-goods" v-for="item in subList" :key="item.id">
+        <div class="head">
+          <h3>- {{item.name}} -</h3>
+          <p class="tag">{{item.desc}}</p>
+          <XtxMore />
+        </div>
+        <div class="body">
+          <GoodsItem v-for="g in item.goods" :key="g.id" :goods="g" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import { findBanner } from '@/api/home'
+import { findTopCategory } from '@/api/category'
 // import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import GoodsItem from './components/goods-item'
 export default {
   name: 'TopCategory',
@@ -54,9 +66,20 @@ export default {
       return cate
     })
 
+    // 推荐商品
+    const subList = ref([])
+    const getSubList = () => {
+      findTopCategory(route.params.id).then(data => {
+        subList.value = data.result.children
+      })
+    }
+    watch(() => route.params.id, (newVal) => {
+      newVal && getSubList()
+    }, { immediate: true })
     return {
       sliders,
-      topCategory
+      topCategory,
+      subList
     }
   }
 }
@@ -99,4 +122,29 @@ export default {
     }
   }
 }
+.ref-goods {
+    background-color: #fff;
+    margin-top: 20px;
+    position: relative;
+    .head {
+      .xtx-more {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+      .tag {
+        text-align: center;
+        color: #999;
+        font-size: 20px;
+        position: relative;
+        top: -20px;
+      }
+    }
+    .body {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      padding: 0 65px 30px;
+    }
+  }
 </style>

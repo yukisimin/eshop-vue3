@@ -12,7 +12,7 @@ export default createStore({
   },
   plugins: [
     createPersistedstate({
-      key: 'eshop-client-pc-store',
+      key: 'wangyishop-client-pc-store',
       paths: ['user', 'cart']
     })
   ]

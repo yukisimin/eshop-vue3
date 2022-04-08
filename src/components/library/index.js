@@ -9,9 +9,10 @@
 // 导入library文件夹下的所有组件
 // 批量导入需要使用一个函数 require.context(dir,deep,matching)
 // 参数：1. 目录  2. 是否加载子目录  3. 加载的正则匹配
+// 文件名称数组
+import Message from './Message'
 const importFn = require.context('./', false, /\.vue$/)
-console.dir(importFn.keys()) // 文件名称数组
-
+console.dir(importFn.keys())
 export default {
   install (app) {
     // app.component(XtxSkeleton.name, XtxSkeleton)
@@ -31,6 +32,9 @@ export default {
 
     // 定义指令
     defineDirective(app)
+
+    // 如果你想挂载全局的属性，能够通过组件实例调用的属性   this.$message
+    app.config.globalProperties.$message = Message// 原型函数
   }
 }
 

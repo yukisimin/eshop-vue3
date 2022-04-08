@@ -8,11 +8,8 @@
         <i class="iconfont icon-search"></i>
         <input type="text" placeholder="搜一搜">
       </div>
-      <div class="cart">
-        <a class="curr" href="#">
-          <i class="iconfont icon-cart"></i><em>2</em>
-        </a>
-      </div>
+     <!-- 使用头部购物车组件 -->
+      <AppHeaderCart />
     </div>
   </header>
 </template>
@@ -21,9 +18,10 @@ import AppHeaderNav from './app-header-nav'
 // import AppHeaderSticky from './app-header-sticky'
 // import AppHeaderStickyUtils from './app-header-sticky-utils'
 import AppHeaderStickyUtils from './app-header-sticky-utils.vue'
+import AppHeaderCart from './app-header-cart.vue'
 export default {
   name: 'AppHeader',
-  components: { AppHeaderNav, AppHeaderStickyUtils }
+  components: { AppHeaderNav, AppHeaderStickyUtils, AppHeaderCart }
 }
 </script>
 <style scoped lang='less'>

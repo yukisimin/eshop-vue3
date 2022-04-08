@@ -3,11 +3,11 @@
     <div class="container">
       <ul>
           <template v-if="profile.token">
-        <li><a href="javascript:;"><i class="iconfont icon-user"></i>{{profile.account}}</a></li>
-        <li><a href="javascript:;">退出登录</a></li>
+         <li><RouterLink to="/member"><i class="iconfont icon-user"></i>{{profile.account}}</RouterLink></li>
+        <li><a @click="logout" href="javascript:;">退出登录</a></li>
           </template>
           <template v-else>
-        <li><a href="javascript:;">请先登录</a></li>
+        <li><RouterLink to="/login">请先登录</RouterLink></li>
         <li><a href="javascript:;">免费注册</a></li>
           </template>
         <li><a href="javascript:;">我的订单</a></li>
@@ -22,6 +22,7 @@
 <script>
 import { computed } from '@vue/runtime-core'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 export default {
   name: 'AppTopnav',
   //   获取用户信息才能控制切换导航菜单
@@ -32,7 +33,12 @@ export default {
     const profile = computed(() => {
       return store.state.user.profile
     })
-    return { profile }
+    const router = useRouter()
+    const logout = () => {
+      store.commit('user/setUser', {})
+      router.push('/login')
+    }
+    return { profile, logout }
   }
 }
 </script>

@@ -30,12 +30,12 @@
 import HomePanel from './home-panel'
 import HomeGoods from './home-goods'
 import { findGoods } from '@/api/home'
-import { useLazyData } from '@/hooks'
+import { } from '@/hooks'
 export default {
   name: 'HomeProduct',
   components: { HomePanel, HomeGoods },
   setup () {
-    const { target, result } = useLazyData(findGoods)
+    const { target, result } = (findGoods)
     return { target, list: result }
   }
 }
